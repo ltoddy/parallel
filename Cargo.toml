@@ -2,5 +2,7 @@
 name = "parallel"
 version = "0.1.0"
 authors = ["ltoddy <taoliu14@acm.org>"]
+description = "Parallel is a message queue."
+license = "MIT"
 
 [dependencies]
