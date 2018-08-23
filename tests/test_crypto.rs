@@ -5,7 +5,7 @@ mod test_crypto {
     use parallel::crypto::*;
 
     #[test]
-    pub fn test_base64_decode() {
+    pub fn test_base64_encode() {
         assert_eq!(base64_encode(String::from("9153728a-074f-4510-966f-f3098ddb1bd9")),
                    String::from("OTE1MzcyOGEtMDc0Zi00NTEwLTk2NmYtZjMwOThkZGIxYmQ5"));
 
