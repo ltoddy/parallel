@@ -1,8 +1,21 @@
+defaults: &defaults
+  docker:
+    - image: circleci/rust
+
+
 version: 2
 jobs:
-  build:
-    docker:
-    - image: circleci/rust
+  test:
+    <<: *defaults
     steps:
-    - checkout
-    - run: echo "hello world"
+      - checkout
+      - cargo check
+      - cargo test
+      - cargo build
+      - cargo build --release
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
