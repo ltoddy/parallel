@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: rust
+    - image: circleci/rust
     steps:
     - checkout
-    - run: cargo test
+    - run: echo "hello world"
