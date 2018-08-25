@@ -1,5 +1,5 @@
 pub mod crypto {
-    pub fn base64_encode(input: String) -> String {
+    pub fn base64_encode(input: String) -> Result<String, ()> {
         let base64_pad: char = '=';
         let base64en: Vec<char> = vec![
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -36,10 +36,10 @@ pub mod crypto {
             output.push(base64_pad);
         }
 
-        return output;
+        return Ok(output);
     }
 
-    pub fn base64_decode(input: String) -> String {
+    pub fn base64_decode(input: String) -> Result<String, &'static str> {
         let base64de: Vec<isize> = vec![
             62, -1, -1, -1, 63, 52, 53, 54, /* '+', ',', '-', '.', '/', '0', '1', '2', */
             55, 56, 57, 58, 59, 60, 61, -1, /* '3', '4', '5', '6', '7', '8', '9', ':', */
@@ -66,7 +66,7 @@ pub mod crypto {
 
             let c: isize = base64de[(input[i] - base64de_first as u8) as usize];
             if input[i] < base64de_first as u8 || input[i] > base64de_last as u8 || c == -1 {
-                panic!("invalid base64 code");
+                return Err("invalid base64 code");
             }
 
             match i % 4 {
@@ -106,6 +106,6 @@ pub mod crypto {
             }
             res.push(output[i] as u8 as char);
         }
-        return res;
+        return Ok(res);
     }
 }
