@@ -2,7 +2,8 @@ extern crate parallel;
 
 #[cfg(test)]
 mod test_crypto {
-    use parallel::crypto::*;
+    use parallel::crypto::base64_decode;
+    use parallel::crypto::base64_encode;
 
     #[test]
     pub fn test_base64_encode() {
